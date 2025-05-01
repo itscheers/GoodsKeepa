@@ -1,6 +1,4 @@
-/* Тёмно-синяя тема + стили для dark-table */
 
-/* 1. Общий фон всего приложения */
 .root,
 .border-pane,
 .tab-pane,
@@ -10,7 +8,6 @@
     -fx-background-color: #1B263B !important;
 }
 
-/* 2. Вкладки (TabPane) */
 .tab-pane .tab-header-area .tab {
     -fx-background-color: #1B263B !important;
 }
@@ -24,7 +21,6 @@
     -fx-text-fill: white !important;
 }
 
-/* 3. Панель инструментов */
 .tool-bar {
     -fx-background-color: #1B263B !important;
 }
@@ -36,12 +32,10 @@
     -fx-background-color: #333333 !important;
 }
 
-/* 4. Центрирование HBox */
 .hbox {
     -fx-background-color: transparent !important;
 }
 
-/* 5. Поля ввода */
 .text-field {
     -fx-background-color: #28334A !important;
     -fx-control-inner-background: #28334A !important;
@@ -52,38 +46,34 @@
     -fx-background-radius: 4 !important;
 }
 
-/* 6. Таблица с классом dark-table */
 .dark-table {
     -fx-background-color: #1B263B !important;
     -fx-control-inner-background: #1B263B !important;
     -fx-table-cell-border-color: transparent !important;
 }
 
-/* 6.1. Полный фон header-ряда */
 .dark-table .table-header-row {
     -fx-background-color: #2E3B4E !important;
 }
 
-/* 6.2. Убираем «дыры» под колонками */
 .dark-table .headers-region,
 .dark-table > .column-header-background {
     -fx-background-color: transparent !important;
 }
 
-/* 6.3. Ячейки заголовков */
+
 .dark-table .column-header {
     -fx-background-color: transparent !important;
 }
-/* 6.4. Текст заголовков */
+
 .dark-table .column-header .label {
     -fx-text-fill: white !important;
 }
-/* 6.5. Стрелочка */
+
 .dark-table .column-header .arrow-button {
     -fx-background-color: transparent !important;
 }
 
-/* 6.6. Область прокрутки и placeholder */
 .dark-table .virtual-flow,
 .dark-table .viewport,
 .dark-table .clipped-container,
@@ -91,7 +81,6 @@
     -fx-background-color: #1B263B !important;
 }
 
-/* 6.7. Чередующиеся строки и выделение */
 .dark-table .table-row-cell:odd {
     -fx-background-color: #1B263B !important;
 }

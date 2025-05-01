@@ -13,9 +13,9 @@
 
     <top>
         <ToolBar style="-fx-background-color: #1f2a38;">
-            <Button text="Добавить"     onAction="#onAdd" style="-fx-background-color:black; -fx-text-fill:white;"/>
-            <Button text="Редактировать" onAction="#onEdit" style="-fx-background-color:black; -fx-text-fill:white;"/>
-            <Button text="Удалить"      onAction="#onDelete" style="-fx-background-color:black; -fx-text-fill:white;"/>
+            <Button text="Додати"     onAction="#onAdd" style="-fx-background-color:black; -fx-text-fill:white;"/>
+            <Button text="Редагувати" onAction="#onEdit" style="-fx-background-color:black; -fx-text-fill:white;"/>
+            <Button text="Видалити"      onAction="#onDelete" style="-fx-background-color:black; -fx-text-fill:white;"/>
         </ToolBar>
     </top>
 
@@ -24,11 +24,11 @@
                    style="-fx-background-color: #1f2a38; -fx-control-inner-background: #1f2a38;">
             <columns>
                 <TableColumn fx:id="colId"    text="ID"        prefWidth="50"/>
-                <TableColumn fx:id="colName"  text="Название"  prefWidth="150"/>
+                <TableColumn fx:id="colName"  text="Назва"  prefWidth="150"/>
                 <TableColumn fx:id="colBrand" text="Бренд"     prefWidth="150"/>
-                <TableColumn fx:id="colPrice" text="Цена"      prefWidth="80"/>
-                <TableColumn fx:id="colQty"   text="Кол-во"     prefWidth="80"/>
-                <TableColumn fx:id="colCat"   text="Категория" prefWidth="150"/>
+                <TableColumn fx:id="colPrice" text="Ціна"      prefWidth="80"/>
+                <TableColumn fx:id="colQty"   text="Кількість"     prefWidth="80"/>
+                <TableColumn fx:id="colCat"   text="Категорія" prefWidth="150"/>
             </columns>
         </TableView>
     </center>
@@ -36,7 +36,7 @@
     <bottom>
         <HBox alignment="CENTER_RIGHT"
               style="-fx-background-color: #1f2a38; -fx-padding: 5;">
-            <Label fx:id="lblTime" text="Курсова Робота" style="-fx-text-fill: white;"/>
+            <Label fx:id="Курсова" text="Курсова Робота" style="-fx-text-fill: white;"/>
         </HBox>
     </bottom>
 

@@ -62,8 +62,8 @@ public class CategoryController {
 
     @FXML private void onAdd() {
         TextInputDialog dlg = new TextInputDialog();
-        dlg.setHeaderText("Новая категория");
-        dlg.setContentText("Введите имя:");
+        dlg.setHeaderText("Нова категорія");
+        dlg.setContentText("Введіть ім'я:");
         Optional<String> res = dlg.showAndWait();
         res.ifPresent(name -> {
             try {
@@ -80,8 +80,8 @@ public class CategoryController {
         if (sel == null) return;
 
         TextInputDialog dlg = new TextInputDialog(sel.getName());
-        dlg.setHeaderText("Редактировать категорию");
-        dlg.setContentText("Новое имя:");
+        dlg.setHeaderText("Редагувати категорію");
+        dlg.setContentText("Нове ім'я:");
         Optional<String> res = dlg.showAndWait();
         res.ifPresent(name -> {
             try {
@@ -99,7 +99,7 @@ public class CategoryController {
 
         Alert confirm = new Alert(
                 Alert.AlertType.CONFIRMATION,
-                "Удалить категорию «" + sel.getName() + "»?",
+                "Видалити категорію «" + sel.getName() + "»?",
                 ButtonType.YES, ButtonType.NO
         );
         Optional<ButtonType> ans = confirm.showAndWait();

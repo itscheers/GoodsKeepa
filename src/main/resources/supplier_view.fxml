@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.control.ToolBar?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.geometry.Pos?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane xmlns="http://javafx.com/javafx/20"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.mycompany.inventory.controller.SupplierController">
 
     <top>
-        <ToolBar style="-fx-background-color: #1f2a38;">
-            <Button text="Добавить"     onAction="#onAdd" style="-fx-background-color:black; -fx-text-fill:white;"/>
-            <Button text="Редактировать" onAction="#onEdit" style="-fx-background-color:black; -fx-text-fill:white;"/>
-            <Button text="Удалить"      onAction="#onDelete" style="-fx-background-color:black; -fx-text-fill:white;"/>
+        <ToolBar style="-fx-background-color: #1f2a38; -fx-border-color: transparent;">
+            <Button text="Додати"     onAction="#onAdd"
+                    style="-fx-background-color:black; -fx-text-fill:white;"/>
+            <Button text="Редагувати" onAction="#onEdit"
+                    style="-fx-background-color:black; -fx-text-fill:white;"/>
+            <Button text="Видалити"   onAction="#onDelete"
+                    style="-fx-background-color:black; -fx-text-fill:white;"/>
         </ToolBar>
     </top>
 
@@ -23,9 +27,10 @@
         <TableView fx:id="table"
                    style="-fx-background-color: #1f2a38; -fx-control-inner-background: #1f2a38;">
             <columns>
-                <TableColumn fx:id="colId"    text="ID"       prefWidth="50"/>
-                <TableColumn fx:id="colFirst" text="Имя"      prefWidth="150"/>
-                <TableColumn fx:id="colLast"  text="Фамилия"  prefWidth="150"/>
+                <TableColumn fx:id="colId"      text="ID"        prefWidth="50"/>
+                <TableColumn fx:id="colFirst"   text="Ім'я"      prefWidth="150"/>
+                <TableColumn fx:id="colLast"    text="Прізвище"  prefWidth="150"/>
+                <TableColumn fx:id="colCompany" text="Компанія"  prefWidth="200"/>
             </columns>
         </TableView>
     </center>
@@ -33,7 +38,9 @@
     <bottom>
         <HBox alignment="CENTER_RIGHT"
               style="-fx-background-color: #1f2a38; -fx-padding: 5;">
-            <Label fx:id="lblTime" text="Курсова Робота" style="-fx-text-fill: white;"/>
+            <Label fx:id="lblFooter"
+                   text="Курсова Робота"
+                   style="-fx-text-fill: white;"/>
         </HBox>
     </bottom>
 
