@@ -18,7 +18,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
-        primaryStage.setTitle("Inventory Manager");
+        primaryStage.setTitle("СКЛАД ТОВАРІВ");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -27,3 +27,4 @@ public class Main extends Application {
         launch(args);
     }
 }
+

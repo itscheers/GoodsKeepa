@@ -23,6 +23,7 @@ public class CategoryDAO {
         }
     }
 
+
     public Category getById(int id) throws SQLException {
         String sql = "SELECT * FROM categories WHERE id = ?";
         try (Connection conn = DBUtil.getConnection();

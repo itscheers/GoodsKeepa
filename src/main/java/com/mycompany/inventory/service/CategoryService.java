@@ -28,7 +28,7 @@ public class CategoryService {
     public void updateCategory(int id, String newName) throws SQLException {
         for (Category c : dao.filterByName(newName)) {
             if (c.getName().equalsIgnoreCase(newName) && c.getId() != id) {
-                throw new SQLException("Категория с именем «" + newName + "» уже существует");
+                throw new SQLException("Категорія с іменем «" + newName + "» вже існує");
             }
         }
         Category c = dao.getById(id);
@@ -40,3 +40,4 @@ public class CategoryService {
         dao.delete(id);
     }
 }
+

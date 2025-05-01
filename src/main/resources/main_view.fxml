@@ -8,15 +8,16 @@
             xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <TabPane>
-            <Tab text="Категории">
+            <Tab text="Категорії">
                 <fx:include source="category_view.fxml"/>
             </Tab>
-            <Tab text="Товары">
+            <Tab text="Товари">
                 <fx:include source="product_view.fxml"/>
             </Tab>
-            <Tab text="Поставщики">
+            <Tab text="Постачальники">
                 <fx:include source="supplier_view.fxml"/>
             </Tab>
         </TabPane>
     </center>
 </BorderPane>
+

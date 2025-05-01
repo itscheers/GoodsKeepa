@@ -25,6 +25,7 @@ public class ProductDAO {
         }
     }
 
+
     public Product getById(int id) throws SQLException {
         String sql = "SELECT * FROM products WHERE id = ?";
         try (Connection conn = DBUtil.getConnection();

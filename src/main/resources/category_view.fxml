@@ -11,30 +11,27 @@
 <BorderPane xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.mycompany.inventory.controller.CategoryController">
 
-    <!-- Сверху только тулбар -->
     <top>
         <ToolBar style="-fx-background-color: #1f2a38;">
-            <Button text="Добавить"    onAction="#onAdd"
+            <Button text="Додати"    onAction="#onAdd"
                     style="-fx-background-color:black; -fx-text-fill:white;"/>
-            <Button text="Редактировать" onAction="#onEdit"
+            <Button text="Редагувати" onAction="#onEdit"
                     style="-fx-background-color:black; -fx-text-fill:white;"/>
-            <Button text="Удалить"     onAction="#onDelete"
+            <Button text="Видалити"     onAction="#onDelete"
                     style="-fx-background-color:black; -fx-text-fill:white;"/>
         </ToolBar>
     </top>
 
-    <!-- Центр — таблица -->
     <center>
         <TableView fx:id="table"
                    style="-fx-background-color: #1f2a38; -fx-control-inner-background: #1f2a38;">
             <columns>
                 <TableColumn fx:id="colId"   text="ID"       prefWidth="50"/>
-                <TableColumn fx:id="colName" text="Название" prefWidth="200"/>
+                <TableColumn fx:id="colName" text="Назва" prefWidth="200"/>
             </columns>
         </TableView>
     </center>
 
-    <!-- Снизу — линия с временем -->
     <bottom>
         <HBox alignment="CENTER_RIGHT"
               style="-fx-background-color: #1f2a38; -fx-padding: 5;">
@@ -43,3 +40,4 @@
     </bottom>
 
 </BorderPane>
+

@@ -10,14 +10,17 @@ import java.util.List;
 public class SupplierDAO {
 
     public void add(Supplier s) throws SQLException {
-        String sql = "INSERT INTO suppliers(first_name, last_name) VALUES(?,?)";
+        String sql = "INSERT INTO suppliers(first_name, last_name, company) VALUES(?, ?, ?)";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, s.getFirstName());
             ps.setString(2, s.getLastName());
+            ps.setString(3, s.getCompany());
             ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
-                if (rs.next()) s.setId(rs.getInt(1));
+                if (rs.next()) {
+                    s.setId(rs.getInt(1));
+                }
             }
         }
     }
@@ -28,7 +31,9 @@ public class SupplierDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) return mapRow(rs);
+                if (rs.next()) {
+                    return mapRow(rs);
+                }
             }
         }
         return null;
@@ -40,18 +45,21 @@ public class SupplierDAO {
         try (Connection conn = DBUtil.getConnection();
              Statement st = conn.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
-            while (rs.next()) list.add(mapRow(rs));
+            while (rs.next()) {
+                list.add(mapRow(rs));
+            }
         }
         return list;
     }
 
     public void update(Supplier s) throws SQLException {
-        String sql = "UPDATE suppliers SET first_name = ?, last_name = ? WHERE id = ?";
+        String sql = "UPDATE suppliers SET first_name = ?, last_name = ?, company = ? WHERE id = ?";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, s.getFirstName());
             ps.setString(2, s.getLastName());
-            ps.setInt(3, s.getId());
+            ps.setString(3, s.getCompany());
+            ps.setInt(4, s.getId());
             ps.executeUpdate();
         }
     }
@@ -74,7 +82,9 @@ public class SupplierDAO {
             ps.setString(1, pattern);
             ps.setString(2, pattern);
             try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) list.add(mapRow(rs));
+                while (rs.next()) {
+                    list.add(mapRow(rs));
+                }
             }
         }
         return list;
@@ -84,7 +94,8 @@ public class SupplierDAO {
         return new Supplier(
                 rs.getInt("id"),
                 rs.getString("first_name"),
-                rs.getString("last_name")
+                rs.getString("last_name"),
+                rs.getString("company")
         );
     }
 }

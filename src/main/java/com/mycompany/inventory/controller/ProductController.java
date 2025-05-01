@@ -82,8 +82,8 @@ public class ProductController {
 
     @FXML private void onAdd() {
         TextInputDialog dlg = new TextInputDialog();
-        dlg.setHeaderText("Новый товар (имя,бренд,цена,кол-во,категория)");
-        dlg.setContentText("Введите через запятую:");
+        dlg.setHeaderText("Новий товар (імя,бренд,ціна,кількість,категорія)");
+        dlg.setContentText("Введіть через кому:");
         Optional<String> res = dlg.showAndWait();
         res.ifPresent(str -> {
             try {
@@ -116,8 +116,8 @@ public class ProductController {
                             .findFirst().map(Category::getName).orElse("")
             );
             TextInputDialog dlg = new TextInputDialog(initial);
-            dlg.setHeaderText("Редактировать товар");
-            dlg.setContentText("Имя,бренд,цена,кол-во,категория:");
+            dlg.setHeaderText("Редагувати товар");
+            dlg.setContentText("Ім'я,бренд,ціна,кількість,категорія:");
             Optional<String> res = dlg.showAndWait();
             res.ifPresent(str -> {
                 try {
@@ -140,11 +140,12 @@ public class ProductController {
         }
     }
 
+
     @FXML private void onDelete() {
         Product sel = table.getSelectionModel().getSelectedItem();
         if (sel == null) return;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
-                "Удалить товар «" + sel.getName() + "»?", ButtonType.YES, ButtonType.NO);
+                "Видалити товар «" + sel.getName() + "»?", ButtonType.YES, ButtonType.NO);
         Optional<ButtonType> result = alert.showAndWait();
         if (result.orElse(ButtonType.NO) == ButtonType.YES) {
             try {

@@ -17,6 +17,7 @@ public class SupplierController {
     @FXML private TableColumn<Supplier, Integer> colId;
     @FXML private TableColumn<Supplier, String>  colFirst;
     @FXML private TableColumn<Supplier, String>  colLast;
+    @FXML private TableColumn<Supplier, String>  colCompany;
     @FXML private TextField tfSearch;
 
     private final SupplierService service = new SupplierService();
@@ -27,6 +28,7 @@ public class SupplierController {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colFirst.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         colLast.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        colCompany.setCellValueFactory(new PropertyValueFactory<>("company"));  // ← привязываем новую колонку
         table.setItems(data);
         loadAll();
     }
@@ -42,15 +44,17 @@ public class SupplierController {
     @FXML private void onSearch() {
         String kw = tfSearch.getText().trim().toLowerCase();
         try {
+            List<Supplier> all = service.listAll();
             if (kw.isEmpty()) {
-                loadAll();
+                data.setAll(all);
             } else {
-                List<Supplier> filtered = service.listAll().stream()
+                data.setAll(all.stream()
                         .filter(s ->
                                 s.getFirstName().toLowerCase().contains(kw) ||
-                                        s.getLastName().toLowerCase().contains(kw)
-                        ).toList();
-                data.setAll(filtered);
+                                        s.getLastName().toLowerCase().contains(kw) ||
+                                        s.getCompany().toLowerCase().contains(kw)  // фильтрация по компании
+                        )
+                        .toList());
             }
         } catch (SQLException e) {
             showError(e);
@@ -59,15 +63,16 @@ public class SupplierController {
 
     @FXML private void onAdd() {
         TextInputDialog dlg = new TextInputDialog();
-        dlg.setHeaderText("Добавить поставщика");
-        dlg.setContentText("Введите имя и фамилию через пробел:");
+        dlg.setHeaderText("Додати постачальника");
+        dlg.setContentText("Введіть ім'я, прізвище и компанію через кому:");
         Optional<String> res = dlg.showAndWait();
         res.ifPresent(str -> {
             try {
-                String[] parts = str.trim().split("\\s+", 2);
-                String first = parts[0];
-                String last  = parts.length > 1 ? parts[1] : "";
-                service.createSupplier(first, last);
+                String[] parts = str.split(",", 3);
+                String first   = parts[0].trim();
+                String last    = parts.length > 1 ? parts[1].trim() : "";
+                String company = parts.length > 2 ? parts[2].trim() : "";
+                service.createSupplier(first, last, company);  // ← новый метод
                 loadAll();
             } catch (Exception e) {
                 showError(e);
@@ -80,18 +85,19 @@ public class SupplierController {
         if (sel == null) return;
 
         TextInputDialog dlg = new TextInputDialog(
-                sel.getFirstName() + " " + sel.getLastName()
+                sel.getFirstName() + ", " + sel.getLastName() + ", " + sel.getCompany()
         );
-        dlg.setHeaderText("Редактировать поставщика");
-        dlg.setContentText("Новое имя и фамилию через пробел:");
+        dlg.setHeaderText("Редагувати постачальника");
+        dlg.setContentText("Ім'я, прізвище, компанія через кому:");
         Optional<String> res = dlg.showAndWait();
 
         res.ifPresent(str -> {
             try {
-                String[] parts = str.trim().split("\\s+", 2);
-                String first = parts[0];
-                String last  = parts.length > 1 ? parts[1] : "";
-                service.updateSupplier(sel.getId(), first, last);
+                String[] parts = str.split(",", 3);
+                String first   = parts[0].trim();
+                String last    = parts.length > 1 ? parts[1].trim() : "";
+                String company = parts.length > 2 ? parts[2].trim() : "";
+                service.updateSupplier(sel.getId(), first, last, company);  // ← новый метод
                 loadAll();
             } catch (Exception e) {
                 showError(e);
@@ -105,7 +111,8 @@ public class SupplierController {
 
         Alert confirm = new Alert(
                 Alert.AlertType.CONFIRMATION,
-                "Удалить «" + sel.getFirstName() + " " + sel.getLastName() + "»?",
+                "Видалити «" + sel.getFirstName() + " " + sel.getLastName() +
+                        " (" + sel.getCompany() + ")»?",
                 ButtonType.YES, ButtonType.NO
         );
         Optional<ButtonType> ans = confirm.showAndWait();

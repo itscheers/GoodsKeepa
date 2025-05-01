@@ -30,7 +30,7 @@ public class ProductService {
             if (p.getBrand().equalsIgnoreCase(brand)
                     && p.getCategoryId() == categoryId
                     && p.getId() != id) {
-                throw new SQLException("Товар уже существует: " + name + " (" + brand + ")");
+                throw new SQLException("Товар вже існує: " + name + " (" + brand + ")");
             }
         }
         Product p = dao.getById(id);
@@ -46,3 +46,4 @@ public class ProductService {
         dao.delete(id);
     }
 }
+
