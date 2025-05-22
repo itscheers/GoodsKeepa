@@ -28,7 +28,7 @@ public class SupplierController {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colFirst.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         colLast.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        colCompany.setCellValueFactory(new PropertyValueFactory<>("company"));  // ← привязываем новую колонку
+        colCompany.setCellValueFactory(new PropertyValueFactory<>("company"));
         table.setItems(data);
         loadAll();
     }
@@ -52,7 +52,7 @@ public class SupplierController {
                         .filter(s ->
                                 s.getFirstName().toLowerCase().contains(kw) ||
                                         s.getLastName().toLowerCase().contains(kw) ||
-                                        s.getCompany().toLowerCase().contains(kw)  // фильтрация по компании
+                                        s.getCompany().toLowerCase().contains(kw)
                         )
                         .toList());
             }
