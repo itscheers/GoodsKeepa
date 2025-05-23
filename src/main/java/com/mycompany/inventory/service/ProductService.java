@@ -24,6 +24,9 @@ public class ProductService {
     public List<Product> listAll() throws SQLException {
         return dao.getAll();
     }
+    public List<Product> searchProducts(String kw) throws SQLException {
+        return dao.filterByName(kw);
+    }
 
     public void updateProduct(int id, String name, String brand, double price, int quantity, int categoryId) throws SQLException {
         for (Product p : dao.filterByName(name)) {

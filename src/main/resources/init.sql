@@ -1,4 +1,6 @@
-
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS suppliers;
+DROP TABLE IF EXISTS categories;
 
 CREATE TABLE IF NOT EXISTS categories (
                                           id   INTEGER PRIMARY KEY AUTOINCREMENT,

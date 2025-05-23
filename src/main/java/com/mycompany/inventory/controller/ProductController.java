@@ -25,6 +25,7 @@ public class ProductController {
     @FXML private TableColumn<Product, String>  colCat;
     @FXML private TextField tfSearch;
 
+
     private final ProductService productService = new ProductService();
     private final CategoryService categoryService = new CategoryService();
     private final ObservableList<Product> data = FXCollections.observableArrayList();
@@ -55,6 +56,19 @@ public class ProductController {
         loadAll();
     }
 
+    @FXML private void onSearch() {
+        String kw = tfSearch.getText().trim().toLowerCase();
+        try {
+            if (kw.isEmpty()) {
+                loadAll();
+            } else {
+                data.setAll(productService.searchProducts(kw));
+            }
+        } catch (SQLException e) {
+            showError(e);
+        }
+    }
+
     private void loadAll() {
         try {
             data.setAll(productService.listAll());
@@ -63,22 +77,7 @@ public class ProductController {
         }
     }
 
-    @FXML private void onSearch() {
-        String kw = tfSearch.getText().trim().toLowerCase();
-        try {
-            if (kw.isEmpty()) {
-                loadAll();
-            } else {
-                List<Product> filtered =
-                        productService.listAll().stream()
-                                .filter(p -> p.getName().toLowerCase().contains(kw))
-                                .toList();
-                data.setAll(filtered);
-            }
-        } catch (SQLException e) {
-            showError(e);
-        }
-    }
+
 
     @FXML private void onAdd() {
         TextInputDialog dlg = new TextInputDialog();

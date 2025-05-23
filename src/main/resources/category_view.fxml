@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.geometry.Pos?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Orientation?>
 
 <BorderPane xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.mycompany.inventory.controller.CategoryController">
 
     <top>
         <ToolBar style="-fx-background-color: #1f2a38;">
-            <Button text="Додати"    onAction="#onAdd"
-                    style="-fx-background-color:black; -fx-text-fill:white;"/>
-            <Button text="Редагувати" onAction="#onEdit"
-                    style="-fx-background-color:black; -fx-text-fill:white;"/>
-            <Button text="Видалити"     onAction="#onDelete"
-                    style="-fx-background-color:black; -fx-text-fill:white;"/>
+            <Button text="Додати"     onAction="#onAdd"    style="-fx-background-color:black; -fx-text-fill:white;"/>
+            <Button text="Редагувати" onAction="#onEdit"   style="-fx-background-color:black; -fx-text-fill:white;"/>
+            <Button text="Видалити"     onAction="#onDelete" style="-fx-background-color:black; -fx-text-fill:white;"/>
+            <Separator orientation="VERTICAL"/>
+            <TextField fx:id="searchField"
+                       promptText="Пошук..."
+                       onAction="#onSearch"
+                       style="-fx-background-color:#fff; -fx-prompt-text-fill:derive(-fx-control-inner-background, -30%);">
+                <padding>
+                    <Insets top="2" right="5" bottom="2" left="5"/>
+                </padding>
+            </TextField>
         </ToolBar>
     </top>
 
@@ -26,18 +28,13 @@
         <TableView fx:id="table"
                    style="-fx-background-color: #1f2a38; -fx-control-inner-background: #1f2a38;">
             <columns>
-                <TableColumn fx:id="colId"   text="ID"       prefWidth="50"/>
-                <TableColumn fx:id="colName" text="Назва" prefWidth="200"/>
+                <TableColumn fx:id="colId"    text="ID"      prefWidth="50"/>
+                <TableColumn fx:id="colName"  text="Назва"   prefWidth="200"/>
             </columns>
         </TableView>
     </center>
 
     <bottom>
-        <HBox alignment="CENTER_RIGHT"
-              style="-fx-background-color: #1f2a38; -fx-padding: 5;">
-            <Label fx:id="lblTime" text="Курсова Робота" style="-fx-text-fill: white;"/>
-        </HBox>
+        <Label text="Курсова робота" style="-fx-text-fill:white; -fx-padding:5;"/>
     </bottom>
-
 </BorderPane>
-

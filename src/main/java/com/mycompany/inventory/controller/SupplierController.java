@@ -44,17 +44,10 @@ public class SupplierController {
     @FXML private void onSearch() {
         String kw = tfSearch.getText().trim().toLowerCase();
         try {
-            List<Supplier> all = service.listAll();
             if (kw.isEmpty()) {
-                data.setAll(all);
+                loadAll();
             } else {
-                data.setAll(all.stream()
-                        .filter(s ->
-                                s.getFirstName().toLowerCase().contains(kw) ||
-                                        s.getLastName().toLowerCase().contains(kw) ||
-                                        s.getCompany().toLowerCase().contains(kw)
-                        )
-                        .toList());
+                data.setAll(service.searchSuppliers(kw));
             }
         } catch (SQLException e) {
             showError(e);

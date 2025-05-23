@@ -26,6 +26,10 @@ public class SupplierService {
         return dao.getAll();
     }
 
+    public List<Supplier> searchSuppliers(String kw) throws SQLException {
+        return dao.filterByName(kw);
+    }
+
     public void updateSupplier(int id, String firstName, String lastName, String company) throws SQLException {
         for (Supplier s : dao.filterByName(firstName)) {
             if (s.getFirstName().equalsIgnoreCase(firstName)

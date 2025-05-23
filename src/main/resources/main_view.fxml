@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Separator?>           <!-- Ось цей рядок -->
+<?import javafx.geometry.Orientation?>
 
 <BorderPane xmlns="http://javafx.com/javafx/18"
             xmlns:fx="http://javafx.com/fxml/1">
