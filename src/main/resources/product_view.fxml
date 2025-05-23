@@ -18,7 +18,7 @@
             <Button text="Редагувати" onAction="#onEdit"   style="-fx-background-color:black; -fx-text-fill:white;"/>
             <Button text="Видалити"   onAction="#onDelete" style="-fx-background-color:black; -fx-text-fill:white;"/>
 
-            <!-- Ось тут додаємо роздільник і поле пошуку -->
+
             <Separator orientation="VERTICAL"/>
             <TextField fx:id="tfSearch"
                        promptText="Пошук товарів…"

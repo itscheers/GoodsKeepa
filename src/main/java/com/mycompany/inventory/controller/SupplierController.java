@@ -65,7 +65,7 @@ public class SupplierController {
                 String first   = parts[0].trim();
                 String last    = parts.length > 1 ? parts[1].trim() : "";
                 String company = parts.length > 2 ? parts[2].trim() : "";
-                service.createSupplier(first, last, company);  // ← новый метод
+                service.createSupplier(first, last, company);
                 loadAll();
             } catch (Exception e) {
                 showError(e);
@@ -90,7 +90,7 @@ public class SupplierController {
                 String first   = parts[0].trim();
                 String last    = parts.length > 1 ? parts[1].trim() : "";
                 String company = parts.length > 2 ? parts[2].trim() : "";
-                service.updateSupplier(sel.getId(), first, last, company);  // ← новый метод
+                service.updateSupplier(sel.getId(), first, last, company);
                 loadAll();
             } catch (Exception e) {
                 showError(e);

@@ -15,7 +15,7 @@
             fx:controller="com.mycompany.inventory.controller.SupplierController">
 
     <top>
-        <!-- Об’єднаний тулбар з кнопками і пошуком -->
+
         <ToolBar style="-fx-background-color: #1f2a38; -fx-border-color: transparent;">
             <Button text="Додати"     onAction="#onAdd"
                     style="-fx-background-color:black; -fx-text-fill:white;"/>
@@ -24,10 +24,10 @@
             <Button text="Видалити"   onAction="#onDelete"
                     style="-fx-background-color:black; -fx-text-fill:white;"/>
 
-            <!-- роздільник між кнопками та пошуком -->
+
             <Separator orientation="VERTICAL"/>
 
-            <!-- поле пошуку -->
+
             <TextField fx:id="tfSearch"
                        promptText="Пошук постачальників…"
                        onAction="#onSearch"
